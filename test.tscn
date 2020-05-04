@@ -36,6 +36,7 @@ script = ExtResource( 2 )
 [node name="RayCast2D" type="RayCast2D" parent="Player"]
 position = Vector2( 8, 8 )
 enabled = true
+cast_to = Vector2( 0, 8 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
