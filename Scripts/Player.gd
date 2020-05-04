@@ -13,13 +13,15 @@ func _ready():
 	target_position = position;
 	
 func _process(delta):
+	# move the player based on move direction
+	position += move_direction * SPEED * delta;
 	
-	position += SPEED * move_direction * delta;
-	
+	# if the player moved further than one space, snap to target position
 	if position.distance_to(last_position) >= TILE_SIZE - SPEED * delta:
 		position = target_position;
 	
 	if position == target_position:
+		# only get movement direction from input when player is at target position
 		move_direction = get_move_direction();
 		last_position = position;
 		target_position += move_direction * TILE_SIZE;
@@ -32,7 +34,7 @@ func get_move_direction():
 	var x = right - left;
 	var y = down - up;
 	
-	# Prevent diagonal movement
+	# Prevent diagonal movement...eventually want to allow this!
 	if x != 0 && y != 0:
 		x = 0;
 		y = 0;
